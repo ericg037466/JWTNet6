@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using JWTNet6.Filter;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTNet6.Controllers
@@ -11,8 +12,10 @@ namespace JWTNet6.Controllers
         public TestController()
         { 
         }
-        [HttpGet, Authorize]
-        public async Task<IActionResult> Get([FromQuery] string request)
+
+        [HttpGet]
+        [AuthorizationFilter]
+        public async Task<IActionResult> Get([FromQuery] string uid)
         {
             
             return Ok();
